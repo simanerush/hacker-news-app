@@ -8,7 +8,10 @@
 import Foundation
 
 // Networking!
-class NetworkManager {
+class NetworkManager: ObservableObject {
+    
+    // Publish posts to any listeners when update occurs
+    @Published var posts = [Post]()
     
     func fetchData() {
         
@@ -18,16 +21,21 @@ class NetworkManager {
             let task = session.dataTask(with: url) { data, response, error in
                 if error == nil {
                     let decoder = JSONDecoder()
+                    // Start decoding
                     if let safeData = data {
                         do {
                             let results = try decoder.decode(Results.self, from: safeData)
+                            DispatchQueue.main.async {
+                                // Update must happen in a main thread
+                                self.posts = results.hits
+                            }
                         }  catch {
                             print(error)
                         }
                     }
                 }
             }
-            // Start networking task
+            // Continue the networking task
             task.resume()
         }
     }

@@ -18,6 +18,8 @@ struct ContentView: View {
                     Text(String(post.points))
                     Text(post.title)
                 }
+            }.contextMenu {
+                Button("Copy Link", action: {() -> Void in UIPasteboard.general.string = post.url})
             }
                 
             }

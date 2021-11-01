@@ -23,7 +23,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("ｎｅｗｓ👾")
             .refreshable {
-                networkManager.fetchData()
+                self.networkManager.fetchData()
             }
         }
         

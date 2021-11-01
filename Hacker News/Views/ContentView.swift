@@ -22,6 +22,9 @@ struct ContentView: View {
                 
             }
             .navigationBarTitle("ｎｅｗｓ👾")
+            .refreshable {
+                networkManager.fetchData()
+            }
         }
         
         // What should be done before view appears

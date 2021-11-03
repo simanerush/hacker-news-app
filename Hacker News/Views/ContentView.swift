@@ -24,7 +24,7 @@ struct ContentView: View {
             }
                 
             }
-            .navigationBarTitle("ｎｅｗｓ👾")
+            .navigationBarTitle("𝗻𝗲𝘄𝘀👾")
             .refreshable {
                 self.networkManager.fetchPosts()
             }

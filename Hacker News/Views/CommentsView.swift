@@ -23,6 +23,7 @@ struct CommentsView: View {
                 
             }
         }
+        .navigationBarTitle("𝗰𝗼𝗺𝗺𝗲𝗻𝘁𝘀")
         .refreshable {
             self.networkManager.fetchCommentsForPost(postId: storyId)
         }

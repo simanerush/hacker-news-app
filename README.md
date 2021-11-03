@@ -6,7 +6,7 @@ An app for browsing hacker news!!👾
 - Scroll through the most relevant tech news
 - Open the post in a Web View
 - Copy the link to the post
-- In progress: View comments
+- View post's comments
 
 ## API
 

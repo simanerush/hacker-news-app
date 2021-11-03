@@ -11,9 +11,12 @@ import WebKit
 struct DetailView: View {
     
     var url: String?
+    var id: String
     
     var body: some View {
-        
+        NavigationLink(destination: CommentsView(storyId: id), label: {
+            Text("View Comments")
+        })
         // Display a Web View
         WebView(urlString: url)
     }
@@ -21,6 +24,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(url: "https://www.google.com")
+        DetailView(url: "https://www.google.com", id: "1")
     }
 }

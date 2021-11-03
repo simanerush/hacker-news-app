@@ -16,9 +16,10 @@ struct CommentsResults: Decodable {
 struct Comment: Decodable, Identifiable {
     var id: String {
         // Since Identifiable protocol requires an id, we can make this property by just returning objectID that's provided in JSON data
-        return storyID
+        return objectID
     }
-    let storyID: String
+    let objectID: String
+    let story_id: Int
     let author: String
     let comment_text: String
 }

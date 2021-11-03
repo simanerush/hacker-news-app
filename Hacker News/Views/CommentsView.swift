@@ -14,17 +14,19 @@ struct CommentsView: View {
     var storyId: String
     
     var body: some View {
-        List {
-            VStack {
-                Text("Author")
-                Text("Comment")
+        NavigationView {
+            List(networkManager.comments) { comment in
+                VStack {
+                    Text(comment.author)
+                    Text(comment.comment_text)
+                }
+                
             }
         }
         .refreshable {
             self.networkManager.fetchCommentsForPost(postId: storyId)
         }
         .onAppear {
-            print(storyId)
             self.networkManager.fetchCommentsForPost(postId: storyId)
         }
     }

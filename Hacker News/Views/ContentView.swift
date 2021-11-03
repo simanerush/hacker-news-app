@@ -13,13 +13,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(networkManager.posts) { post in NavigationLink(destination: CommentsView(storyId: post.id)) {
+            List(networkManager.posts) { post in NavigationLink(destination: WebView(urlString: post.url)) {
                 HStack {
                     Text(String(post.points))
                     Text(post.title)
                 }
             }.contextMenu {
                 Button("Copy Link", action: {() -> Void in UIPasteboard.general.string = post.url})
+                Button("View Comments"), action: {)
             }
                 
             }

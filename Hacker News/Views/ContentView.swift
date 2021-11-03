@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(networkManager.posts) { post in NavigationLink(destination: DetailView(url: post.url)) {
+            List(networkManager.posts) { post in NavigationLink(destination: CommentsView(storyId: post.id)) {
                 HStack {
                     Text(String(post.points))
                     Text(post.title)
@@ -25,13 +25,13 @@ struct ContentView: View {
             }
             .navigationBarTitle("ｎｅｗｓ👾")
             .refreshable {
-                self.networkManager.fetchData()
+                self.networkManager.fetchPosts()
             }
         }
         
         // What should be done before view appears
         .onAppear {
-            self.networkManager.fetchData()
+            self.networkManager.fetchPosts()
         }
     }
 }

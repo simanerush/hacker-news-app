@@ -14,12 +14,11 @@ struct CommentsResults: Decodable {
 
 // Identifiable makes the List be able to identify the order of Post objects
 struct Comment: Decodable, Identifiable {
-//    var id: String {
-//        // Since Identifiable protocol requires an id, we can make this property by just returning objectID that's provided in JSON data
-//        return objectID
-//    }
-//    let objectID: String
-//    let points: Int
-//    let title: String
-//    let url: String?
+    var id: String {
+        // Since Identifiable protocol requires an id, we can make this property by just returning objectID that's provided in JSON data
+        return storyID
+    }
+    let storyID: String
+    let author: String
+    let comment_text: String
 }

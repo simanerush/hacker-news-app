@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 // Networking!
 class NetworkManager: ObservableObject {
+    
+    var ref: DatabaseReference! = Database.database().reference()
     
 //    // Publish posts & comments to any listeners when update occurs
 //    @Published var posts = [Post]()
@@ -70,29 +73,13 @@ class NetworkManager: ObservableObject {
 //    }
     
     func fetchPosts() {
-    
-            // API access (if let, because of optional)
-            if let url = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json") {
-                let session = URLSession(configuration: .default)
-                let task = session.dataTask(with: url) { data, response, error in
-                    if error == nil {
-                        let decoder = JSONDecoder()
-                        // Start decoding
-                        if let safeData = data {
-                            do {
-                                let results = try decoder.decode(Results.self, from: safeData)
-                                DispatchQueue.main.async {
-                                    // Update must happen in a main thread
-                                    print(results)
-                                }
-                            }  catch {
-                                print(error)
-                            }
-                        }
-                    }
-                }
-                // Continue the networking task
-                task.resume()
-            }
-        }
+        ref.child("v0/topstories").getData(completion:  { error, snapshot in
+          guard error == nil else {
+            print(error!.localizedDescription)
+            return;
+          }
+          let stories = snapshot.value as? [Int] ?? nil;
+        });
+
+    }
 }

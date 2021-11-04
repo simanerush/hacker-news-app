@@ -11,14 +11,14 @@ import Foundation
 class NetworkManager: ObservableObject {
     
     // Publish posts & comments to any listeners when update occurs
-    @Published var posts = [Post]()
+    @Published var postsIds = Ids()
     
     @Published var comments = [Comment]()
     
     func fetchPosts() {
         
         // API access (if let, because of optional)
-        if let url = URL(string: "http://hn.algolia.com/api/v1/search?tags=front_page") {
+        if let url = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error == nil {
@@ -26,10 +26,11 @@ class NetworkManager: ObservableObject {
                     // Start decoding
                     if let safeData = data {
                         do {
-                            let results = try decoder.decode(Results.self, from: safeData)
+                            let resultsIds = try decoder.decode(Ids.self, from: safeData)
                             DispatchQueue.main.async {
                                 // Update must happen in a main thread
-                                self.posts = results.hits
+                                self.postsIds = resultsIds
+                                print(self.postsIds)
                             }
                         }  catch {
                             print(error)

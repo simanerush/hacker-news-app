@@ -8,9 +8,8 @@
 import Foundation
 
 // Helper structs to decode JSON data
-struct Results: Decodable {
-    let hits: [Post]
-}
+typealias Ids = [Int]
+
 
 // Identifiable makes the List be able to identify the order of Post objects
 struct Post: Decodable, Identifiable {

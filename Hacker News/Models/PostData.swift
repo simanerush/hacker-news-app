@@ -10,15 +10,18 @@ import Foundation
 // Helper structs to decode JSON data
 typealias Ids = [Int]
 
-
 // Identifiable makes the List be able to identify the order of Post objects
 struct Post: Decodable, Identifiable {
-    var id: String {
-        // Since Identifiable protocol requires an id, we can make this property by just returning objectID that's provided in JSON data
-        return objectID
-    }
-    let objectID: String
-    let points: Int
-    let title: String
+    let id: Int
+    let kids: Ids?
+    let score: Int
     let url: String?
+    let title: String
+    init() {
+        id = 29110444
+        title = ""
+        kids = []
+        score = 0
+        url = nil
+    }
 }

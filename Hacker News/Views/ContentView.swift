@@ -13,26 +13,27 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-//            List(networkManager.posts) { post in NavigationLink(destination: DetailView(url: post.url, id: post.objectID)) {
-//                HStack {
-//                    Text(String(post.points))
-//                    Text(post.title)
-//                }
-//
-//            }.contextMenu {
-//                Button("Copy Link", action: {() -> Void in UIPasteboard.general.string = post.url})
-//            }
-//
-//            }
-//            .navigationBarTitle("𝗻𝗲𝘄𝘀👾")
-//            .refreshable {
-//                self.networkManager.fetchPosts()
-//            }
+            List(networkManager.posts) { post in NavigationLink(destination: DetailView(url: post.url, id: String(post.id))) {
+                HStack {
+                    Text(String(post.score))
+                    Text(post.title)
+                }
+
+            }.contextMenu {
+                Button("Copy Link", action: {() -> Void in UIPasteboard.general.string = post.url})
+            }
+
+            }
+            .navigationBarTitle("𝗻𝗲𝘄𝘀👾")
+            .refreshable {
+                // self.networkManager.fetchPosts()
+            }
         }
         
         // What should be done before view appears
         .onAppear {
-            self.networkManager.fetchPosts()
+            self.networkManager.fetchPostsIds()
+            print(self.networkManager.posts)
         }
     }
 }

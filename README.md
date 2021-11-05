@@ -10,4 +10,4 @@ An app for browsing hacker news!!👾
 
 ## API
 
-The app uses `algolia` API to fetch news and comments.
+The app tries to use the official HN API to fetch news and comments.

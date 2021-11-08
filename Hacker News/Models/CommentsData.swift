@@ -21,5 +21,39 @@ struct Comment: Decodable, Identifiable {
     let objectID: String
     let story_id: Int
     let author: String
-    let comment_text: String
+    var comment_text: String
+    
+    enum CodingKeys: String, CodingKey {
+        case objectID
+        case story_id
+        case author
+        case comment_text
+        
+    }
+
+}
+
+extension Comment {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        objectID = try values.decode(String.self, forKey: .objectID)
+        story_id = try values.decode(Int.self, forKey: .story_id)
+        author = try values.decode(String.self, forKey: .author)
+        comment_text = try values.decode(String.self, forKey: .comment_text).htmlToString
+    }
+}
+
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return nil
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
 }

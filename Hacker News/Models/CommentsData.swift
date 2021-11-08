@@ -23,3 +23,15 @@ struct Comment: Decodable, Identifiable {
     let author: String
     let comment_text: String
 }
+
+struct CommentHN: Decodable, Identifiable {
+    let id: Int
+    let by: String
+    let text: String
+    
+    init() {
+        self.id = 1
+        self.by = ""
+        self.text = ""
+    }
+}

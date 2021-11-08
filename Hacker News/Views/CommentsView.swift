@@ -24,12 +24,14 @@ struct CommentsView: View {
             }
         }
         .navigationBarTitle("𝗰𝗼𝗺𝗺𝗲𝗻𝘁𝘀")
-        .refreshable {
-            self.networkManager.fetchCommentsForPost(postId: storyId)
-        }
+//        .refreshable {
+//            self.networkManager.fetchCommentsForPost(postId: storyId)
+//        }
         .onAppear {
+            for kid in self.networkManager.kidsIds.kids {
+                self.networkManager.fetchCommentsByCommentId(commentId: kid)
+            }
             self.networkManager.fetchCommentsForPost(postId: storyId)
-            self.networkManager.fetchKidsForId(postId: storyId)
         }
     }
 }

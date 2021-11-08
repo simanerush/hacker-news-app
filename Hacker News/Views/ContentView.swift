@@ -33,6 +33,9 @@ struct ContentView: View {
         // What should be done before view appears
         .onAppear {
             self.networkManager.fetchPosts()
+            for post in networkManager.posts {
+                networkManager.fetchKidsForId(postId: post.id)
+            }
         }
     }
 }

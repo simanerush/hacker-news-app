@@ -29,6 +29,7 @@ struct CommentsView: View {
         }
         .onAppear {
             self.networkManager.fetchCommentsForPost(postId: storyId)
+            self.networkManager.fetchKidsForId(postId: storyId)
         }
     }
 }

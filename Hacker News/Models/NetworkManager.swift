@@ -15,6 +15,8 @@ class NetworkManager: ObservableObject {
     
     @Published var comments = [Comment]()
     
+    @Published var kidsIds = KidsIdsResults()
+    
     func fetchPosts() {
         
         // API access (if let, because of optional)
@@ -56,7 +58,32 @@ class NetworkManager: ObservableObject {
                             DispatchQueue.main.async {
                                 // Update must happen in a main thread
                                 self.comments = commentsResults.hits
-                                print(self.comments)
+                            }
+                        }  catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+            // Continue the networking task
+            task.resume()
+        }
+    }
+    
+    func fetchKidsForId(postId id: String) {
+        if let url = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(id).json") {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { data, response, error in
+                if error == nil {
+                    let decoder = JSONDecoder()
+                    // Start decoding
+                    if let safeData = data {
+                        do {
+                            let kidsResults = try decoder.decode(KidsIdsResults.self, from: safeData)
+                            DispatchQueue.main.async {
+                                // Update must happen in a main thread
+                                self.kidsIds.kids = kidsResults.kids
+                                print(self.kidsIds)
                             }
                         }  catch {
                             print(error)

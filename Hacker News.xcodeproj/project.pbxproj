@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		953E75022738DB70004E8697 /* KidsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E75012738DB6F004E8697 /* KidsData.swift */; };
 		95616B982731D6F500C31844 /* CommentsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95616B972731D6F500C31844 /* CommentsData.swift */; };
 		95616B9A27323BF800C31844 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95616B9927323BF800C31844 /* CommentsView.swift */; };
 		95E95ED127276962008F8EE2 /* Hacker_NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E95ED027276962008F8EE2 /* Hacker_NewsApp.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		953E75012738DB6F004E8697 /* KidsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsData.swift; sourceTree = "<group>"; };
 		95616B972731D6F500C31844 /* CommentsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsData.swift; sourceTree = "<group>"; };
 		95616B9927323BF800C31844 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		95E95ECD27276962008F8EE2 /* news!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "news!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				95E95EDF27276E4F008F8EE2 /* NetworkManager.swift */,
 				95E95EE127276F99008F8EE2 /* PostData.swift */,
 				95616B972731D6F500C31844 /* CommentsData.swift */,
+				953E75012738DB6F004E8697 /* KidsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E95EE027276E4F008F8EE2 /* NetworkManager.swift in Sources */,
+				953E75022738DB70004E8697 /* KidsData.swift in Sources */,
 				95E95EE227276F99008F8EE2 /* PostData.swift in Sources */,
 				95E95ED327276962008F8EE2 /* ContentView.swift in Sources */,
 				95E95EE727277BBD008F8EE2 /* WebView.swift in Sources */,

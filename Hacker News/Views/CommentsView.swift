@@ -17,7 +17,6 @@ struct CommentsView: View {
         List(networkManager.comments) { comment in
             VStack(alignment: .leading) {
                 Text(comment.author).fontWeight(.bold)
-                
                 Text(comment.comment_text)
             }
         }

@@ -56,7 +56,6 @@ class NetworkManager: ObservableObject {
                             DispatchQueue.main.async {
                                 // Update must happen in a main thread
                                 self.comments = commentsResults.hits
-                                print(self.comments)
                             }
                         }  catch {
                             print(error)

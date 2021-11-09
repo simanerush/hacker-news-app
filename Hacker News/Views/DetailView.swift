@@ -12,9 +12,10 @@ struct DetailView: View {
     
     var url: String?
     var id: String
+    var title: String
     
     var body: some View {
-        NavigationLink(destination: CommentsView(storyId: id), label: {
+        NavigationLink(destination: CommentsView(storyId: id, storyTitle: title), label: {
             Text("View Comments")
         })
         // Display a Web View
@@ -24,6 +25,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(url: "https://www.google.com", id: "1")
+        DetailView(url: "", id: "", title: "")
     }
 }

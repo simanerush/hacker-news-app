@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(networkManager.posts) { post in NavigationLink(destination: DetailView(url: post.url, id: post.objectID)) {
+            List(networkManager.posts) { post in NavigationLink(destination: DetailView(url: post.url, id: post.objectID, title: post.title)) {
                 HStack {
                     Text(String(post.points))
                     Text(post.title)
@@ -24,7 +24,7 @@ struct ContentView: View {
             }
                 
             }
-            .navigationBarTitle("𝗻𝗲𝘄𝘀👾")
+            .navigationTitle("𝗻𝗲𝘄𝘀👾")
             .refreshable {
                 self.networkManager.fetchPosts()
             }

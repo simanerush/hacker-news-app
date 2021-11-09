@@ -12,6 +12,7 @@ struct CommentsView: View {
     @ObservedObject var networkManager = NetworkManager()
     
     var storyId: String
+    var storyTitle: String
     
     var body: some View {
         List(networkManager.comments) { comment in
@@ -20,8 +21,7 @@ struct CommentsView: View {
                 Text(comment.comment_text)
             }
         }
-        
-        .navigationBarTitle("𝗰𝗼𝗺𝗺𝗲𝗻𝘁𝘀")
+        .navigationTitle(storyTitle)
         .refreshable {
             self.networkManager.fetchCommentsForPost(postId: storyId)
         }
@@ -33,7 +33,7 @@ struct CommentsView: View {
 
 struct CommentsView_Previews: PreviewProvider {
     static var previews: some View {
-        CommentsView(storyId: "29082060")
+        CommentsView(storyId: "29082060", storyTitle: "")
     }
 }
 

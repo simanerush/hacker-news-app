@@ -15,11 +15,13 @@ struct DetailView: View {
     var title: String
     
     var body: some View {
+        
+        // Display a Web View
+        WebView(urlString: url)
+        
         NavigationLink(destination: CommentsView(storyId: id, storyTitle: title), label: {
             Text("View Comments")
         })
-        // Display a Web View
-        WebView(urlString: url)
     }
 }
 

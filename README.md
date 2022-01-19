@@ -11,3 +11,13 @@ An app for browsing hacker news!!👾
 ## API
 
 The app uses `algolia` API to fetch news and comments.
+
+
+## Screenshots
+1. News table
+2. Accessing one article
+3. Accessing comments
+
+![Image](https://i.imgur.com/Pc8GDft.png)
+![Iamge](https://i.imgur.com/g5RJXBp.png)
+![Image](https://i.imgur.com/pPWC0aO.png)
